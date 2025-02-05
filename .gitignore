@@ -16,3 +16,6 @@
 
 # redis: Ignore "dump.rdb" anywhere in the project
 **/dump.rdb
+
+# ignore pre-release services
+services/webui_react/
