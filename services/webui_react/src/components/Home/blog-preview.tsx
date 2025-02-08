@@ -18,28 +18,35 @@ interface BlogPost {
 function BlogPostPreview({ post }: { post: BlogPost }) {
   const { theme } = useTheme();
 
+  const addQuotes = (text: string) => {
+    return `"${text}"`;
+  };
+
   return (
     <div
-      className={`grid md:grid-cols-[1fr_2fr] gap-8 items-stretch ${
+      className={`grid md:grid-cols-[1fr_2fr] gap-8 items-stretch  ${
         post.imagePosition === "right" ? "md:grid-cols-[2fr_1fr]" : ""
       } transition-colors duration-500`}
     >
+      {/* Rest of your component is the same */}
       {post.imagePosition === "right" && (
         <div
           className={`p-8 rounded-3xl h-full flex flex-col justify-between ${
-            theme === "dark" ? "bg-zinc-900" : "bg-white shadow-lg"
+            theme === "dark"
+              ? "bg-zinc-900"
+              : "bg-white shadow-custom dark:shadow-none"
           } transition-colors duration-500`}
         >
           <div className="space-y-6">
-            <span className="text-sm uppercase tracking-wider text-[#C6A760]">
+            <h3 className="text-[#C6A760] font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
               {post.category}
-            </span>
+            </h3>
             <h2
-              className={`text-3xl font-serif leading-tight ${
+              className={`text-3xl font-open-sans tracking-[1.2px] font-[70] ${
                 theme === "dark" ? "text-gray-200" : "text-gray-800"
               } transition-colors duration-500`}
             >
-              {post.subtitle}
+              {addQuotes(post.subtitle)}
             </h2>
             <p
               className={`text-muted-foreground ${
@@ -67,7 +74,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
           post.imagePosition === "right" ? "order-last" : ""
         } h-full`}
       >
-        <div className="relative h-full rounded-3xl overflow-hidden group shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-none">
+        <div className="relative h-full rounded-3xl overflow-hidden group shadow-custom dark:shadow-none">
           <Link href={`/blog/${post.slug}`}>
             <Image
               src={post.image || "/placeholder.svg"}
@@ -81,19 +88,21 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
       {post.imagePosition !== "right" && (
         <div
           className={`p-8 rounded-3xl h-full flex flex-col justify-between ${
-            theme === "dark" ? "bg-zinc-900" : "bg-white shadow-lg"
+            theme === "dark"
+              ? "bg-zinc-900"
+              : "bg-white shadow-custom dark:shadow-none"
           } transition-colors duration-500`}
         >
           <div className="space-y-6">
-            <span className="text-sm uppercase tracking-wider text-[#C6A760]">
+            <h3 className="text-[#C6A760] font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
               {post.category}
-            </span>
+            </h3>
             <h2
-              className={`text-3xl font-serif leading-tight ${
+              className={`text-3xl font-open-sans tracking-[1.2px] font-[70] ${
                 theme === "dark" ? "text-gray-200" : "text-gray-800"
               } transition-colors duration-500`}
             >
-              {post.subtitle}
+              {addQuotes(post.subtitle)}
             </h2>
             <p
               className={`text-muted-foreground ${
@@ -163,12 +172,17 @@ export function BlogPreviews() {
   return (
     <section
       id="blog-previews"
-      className={`py-24 ${theme === "dark" ? "bg-black" : "bg-white"}`}
+      className={`py-24 ${
+        theme === "dark" ? "bg-black" : "bg-light-mode-white"
+      }`}
     >
       <div className="container">
         <div className="space-y-24">
           {posts.map((post, index) => (
-            <BlogPostPreview key={index} post={post} />
+            // Apply max-w-[1000px] and mx-auto to the container wrapping each BlogPostPreview
+            <div key={index} className="max-w-[1150px] mx-auto">
+              <BlogPostPreview post={post} />
+            </div>
           ))}
         </div>
       </div>

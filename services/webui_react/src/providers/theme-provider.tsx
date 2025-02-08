@@ -46,30 +46,38 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     return defaultTheme;
   });
 
+  // --- APPLY DARK CLASS AND SAVE TO LOCALSTORAGE (useEffect hook) ---
   useEffect(() => {
-    // Save to localStorage whenever theme changes
-    if (typeof window !== "undefined") {
-      localStorage.setItem("theme", theme);
+    if (typeof window === "undefined") return; // Prevent errors during SSR
+
+    // *** THIS IS THE KEY PART: Add/remove the 'dark' class ***
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
+
+    // Save to localStorage
+    localStorage.setItem("theme", theme);
 
     // Listen for system preference changes (if enabled)
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
+    const handleSystemThemeChange = () => {
       if (enableSystem) {
         setTheme(mediaQuery.matches ? "dark" : "light");
       }
     };
 
     if (enableSystem) {
-      mediaQuery.addEventListener("change", handleChange);
+      mediaQuery.addEventListener("change", handleSystemThemeChange);
     }
 
     return () => {
       if (enableSystem) {
-        mediaQuery.removeEventListener("change", handleChange); // Cleanup!
+        mediaQuery.removeEventListener("change", handleSystemThemeChange);
       }
     };
-  }, [theme, enableSystem]); // Depend on theme AND enableSystem
+  }, [theme, enableSystem]); // Run whenever theme or enableSystem changes
 
   return (
     <ThemeProviderContext.Provider value={{ theme, setTheme }}>
