@@ -16,7 +16,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="bg-light-mode-white">
         <ThemeProvider defaultTheme="light" enableSystem>
           <ThemeWrapper>{children}</ThemeWrapper>
         </ThemeProvider>
@@ -31,7 +31,7 @@ function ThemeWrapper({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={`${
-        theme === "dark" ? "bg-black" : "bg-white"
+        theme === "dark" ? "bg-black" : "bg-light-mode-white"
       } transition-colors duration-500`}
     >
       <NavBar />

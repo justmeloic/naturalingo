@@ -20,16 +20,16 @@ export function NavBar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 ${
-        theme === "dark" ? "bg-black" : "bg-white"
-      } transition-colors duration-200`} // Added transition for smooth color change
+        theme === "dark" ? "bg-black" : "bg-light-mode-white"
+      } transition-colors duration-0`} // Added transition for smooth color change
     >
       <div className="container flex h-20 items-center justify-between">
         <div className="w-36"></div>
-        <div className="flex items-center justify-center gap-8">
+        <div className="flex items-center justify-center gap-12">
           {/* Apply dark mode text colors and font size to links */}
           <Link
             href="/"
-            className={`text-[14px] hover:text-[#C6A760] transition-colors ${
+            className={`text-[13px] hover:text-[#C6A760] transition-colors ${
               theme === "dark" ? "text-gray-300" : "text-gray-800"
             }`}
           >
@@ -37,7 +37,7 @@ export function NavBar() {
           </Link>
           <Link
             href="/blog"
-            className={`text-[14px] hover:text-[#C6A760] transition-colors ${
+            className={`text-[13px] hover:text-[#C6A760] transition-colors ${
               theme === "dark" ? "text-gray-300" : "text-gray-800"
             }`}
           >
@@ -45,7 +45,7 @@ export function NavBar() {
           </Link>
           <Link
             href="/engineering"
-            className={`text-[14px] hover:text-[#C6A760] transition-colors ${
+            className={`text-[13px] hover:text-[#C6A760] transition-colors ${
               theme === "dark" ? "text-gray-300" : "text-gray-800"
             }`}
           >
@@ -55,7 +55,7 @@ export function NavBar() {
           {isHomePage ? (
             <button
               onClick={() => scrollToSection("contact")}
-              className={`text-[14px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >
@@ -64,7 +64,7 @@ export function NavBar() {
           ) : (
             <Link
               href="/#contact"
-              className={`text-[14px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >
@@ -74,7 +74,7 @@ export function NavBar() {
           {isHomePage ? (
             <button
               onClick={() => scrollToSection("newsletter")}
-              className={`text-[14px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >
@@ -83,7 +83,7 @@ export function NavBar() {
           ) : (
             <Link
               href="/#newsletter"
-              className={`text-[14px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >

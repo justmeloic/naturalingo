@@ -1,29 +1,60 @@
 "use client";
 
+import { useState } from "react";
 import { Github, Linkedin } from "lucide-react";
 import { useTheme } from "@/providers/theme-provider";
 import type React from "react";
+import { toast } from "sonner"; // Import toast from sonner
 
 export function Footer() {
   const { theme } = useTheme();
+  const [email, setEmail] = useState("");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
+    // *** KEY CHANGE:  Get the endpoint from the environment variables.  CRITICAL for security! ***
+    const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+
+    // *** KEY CHANGE: Check if the endpoint is defined! ***
+    if (!formspreeEndpoint) {
+      console.error("Formspree endpoint is not defined!");
+      toast.error("Form submission is not configured correctly."); // User-friendly error
+      return; // Stop the function if the endpoint isn't set.
+    }
+
     try {
-      await fetch("https://formspree.io/f/xbjwkzqv", {
+      const response = await fetch(formspreeEndpoint, {
         method: "POST",
         body: formData,
         headers: {
           Accept: "application/json",
         },
       });
-      event.currentTarget.reset();
+      if (response.ok) {
+        toast.success("Thank you for signing up!"); // Show success toast
+        event.currentTarget.reset();
+        setEmail(""); // Reset the email state as well
+      } else {
+        // *** KEY CHANGE:  More detailed error handling. ***
+        const errorData = await response.json(); // Try to get error details from Formspree.
+        console.error("Formspree error:", errorData); // Log for debugging.
+
+        // Display a more specific error message if possible, otherwise a generic one.
+        toast.error(
+          errorData.error || "Something went wrong. Please try again."
+        );
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
+      toast.error("Something went wrong. Please try again."); // Show error toast
     }
   }
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
   return (
     <footer className="py-24 bg-black text-white">
@@ -35,10 +66,12 @@ export function Footer() {
         <div className="space-y-24">
           {/* About Section */}
           <div className="text-center space-y-4">
-            <h2 className={`text-3xl font-serif text-white`}>
+            <h2
+              className={`text-2xl font-open-sans font-[20] text-white tracking-[1px]`}
+            >
               From First Principles
             </h2>
-            <p className={`text-lg max-w-xl mx-auto text-zinc-400`}>
+            <p className={` max-w-[300px] mx-auto text-zinc-400`}>
               Information is a privilege, and we believe in sharing it widely.
               Join us in building "From First Principles" into a valuable
               resource for everyone.
@@ -47,7 +80,11 @@ export function Footer() {
 
           {/* Newsletter Section */}
           <div id="newsletter" className="text-center space-y-8">
-            <h3 className={`text-2xl font-serif text-white`}>Newsletter</h3>
+            <h4
+              className={`text-2xl font-open-sans font-[20] tracking-[2px] text-white`}
+            >
+              Newsletter
+            </h4>
             <form
               onSubmit={handleSubmit}
               className="max-w-md mx-auto space-y-8"
@@ -59,7 +96,7 @@ export function Footer() {
                   placeholder="Your Email Address"
                   required
                   className={`
-                    w-full bg-transparent border-b-2 pb-2 text-center outline-none text-lg
+                    rounded-full w-full bg-transparent border-b-2 pb-2 text-center outline-none text-lg bg-black
                     placeholder:text-zinc-500 transition-colors
                     border-zinc-800 text-white focus:border-zinc-600
                   `}
@@ -68,7 +105,7 @@ export function Footer() {
               <button
                 type="submit"
                 className={`
-                  w-full max-w-md h-14 rounded-full text-lg font-medium transition-all duration-300
+                  w-full max-w-xs h-14 rounded-full text-lg font-medium transition-all duration-300
                   bg-white text-black hover:bg-zinc-200
                 `}
               >
@@ -94,22 +131,30 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
-                  p-2 rounded-full transition-colors
-                  bg-white text-black hover:bg-zinc-200
-                `}
+            p-2 rounded-full transition-colors
+            bg-white text-black hover:bg-zinc-200
+          `}
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin
+                  className="h-5 w-5"
+                  strokeWidth={0} // Remove the stroke
+                  fill="currentColor" // Fill with the current text color
+                />
               </a>
               <a
                 href="https://github.com/justmeloic/from-first-principles"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
-                  p-2 rounded-full transition-colors
-                  bg-white text-black hover:bg-zinc-200
-                `}
+            p-2 rounded-full transition-colors
+            bg-white text-black hover:bg-zinc-200
+          `}
               >
-                <Github className="h-5 w-5" />
+                <Github
+                  className="h-5 w-5"
+                  strokeWidth={0} // Remove the stroke
+                  fill="currentColor" // Fill with the current text color
+                />
               </a>
             </div>
           </div>

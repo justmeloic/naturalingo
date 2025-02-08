@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
+const defaultTheme = require('tailwindcss/defaultTheme'); // Import defaultTheme
 
 const config = {
   darkMode: ["class"],
@@ -13,9 +14,40 @@ const config = {
     },
     extend: {
       fontFamily: {
-        serif: ["Playfair Display", "serif"],
+        serif: ["Playfair Display", "serif"], // Existing font
+        // Sans-Serif
+        'inter': ['Inter', ...defaultTheme.fontFamily.sans],
+        'roboto': ['Roboto', ...defaultTheme.fontFamily.sans],
+        'open-sans': ['"Open Sans"', ...defaultTheme.fontFamily.sans],
+        'lato': ['Lato', ...defaultTheme.fontFamily.sans],
+        'montserrat': ['Montserrat', ...defaultTheme.fontFamily.sans],
+        'source-sans': ['"Source Sans 3"', ...defaultTheme.fontFamily.sans],
+
+        // Serif
+        'lora': ['Lora', ...defaultTheme.fontFamily.serif],
+        'merriweather': ['Merriweather', ...defaultTheme.fontFamily.serif],
+        'pt-serif': ['"PT Serif"', ...defaultTheme.fontFamily.serif],
+        'playfair-display': ['"Playfair Display"', ...defaultTheme.fontFamily.serif],
+
+        // Monospace
+        'fira-code': ['"Fira Code"', ...defaultTheme.fontFamily.mono],
+        'source-code-pro': ['"Source Code Pro"', ...defaultTheme.fontFamily.mono],
+        'jetbrains-mono': ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
+        'roboto-mono': ['"Roboto Mono"', ...defaultTheme.fontFamily.mono],
+        'space-mono': ['"Space Mono"', ...defaultTheme.fontFamily.mono],
+
+        // Display/Decorative
+        'raleway': ['Raleway', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
+        'oswald': ['Oswald', 'sans-serif'],
+      },
+      boxShadow: {
+        'custom': '-10px 10px 15px 5px rgba(1, 0.1, 0.1, 0.2)',
+        'custom-lg': '-15px 15px 20px 7px rgba(1, 0.1, 0.1, 0.3)', // Example variation
+        'none': 'none'
       },
       colors: {
+        'light-mode-white': '#f4f4f4',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -80,6 +112,6 @@ const config = {
     },
   },
   plugins: [require("@tailwindcss/typography")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

@@ -2,7 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* fonts */
+@import 'typeface-inter';
+@import 'typeface-fira-code';
+@import 'typeface-jetbrains-mono';
+
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700|Playfair+Display");
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/fonts/NunitoSans-ExtraLight.woff2') format('woff2'),
+       url('/fonts/NunitoSans-ExtraLight.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('/fonts/NunitoSans-Light.woff2') format('woff2'),
+       url('/fonts/NunitoSans-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* ... and so on for other weights/styles ... */
 
 :root {
   --background: 0 0% 100%;
@@ -100,7 +123,7 @@
 @layer base {
   body {
     font-family: "Nunito Sans", sans-serif;
-    font-weight: 300;
+    font-weight: 100;
     @apply bg-background text-foreground;
   }
 
@@ -111,13 +134,13 @@
   h5,
   h6 {
     font-family: "Playfair Display", serif;
-    font-weight: 400;
+    /* font-weight: 400; */
     letter-spacing: 0px;
   }
 
   h1 {
-    color: var(--h1-color);
     font-size: 40px;
+    font-weight: 100;
     line-height: normal;
   }
 
@@ -174,4 +197,9 @@
 
 .arrow-btn i:hover {
   background: var(--arrow-btn-hover-color);
+}
+
+.aspect-square { /* Or your custom class */
+  aspect-ratio: 1 / 1; /* Square aspect ratio */
+  width: 300px; /* Example: Set a fixed width, height will adjust to maintain aspect ratio */
 }

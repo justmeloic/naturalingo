@@ -9,7 +9,9 @@ export default function Home() {
   const { theme } = useTheme();
 
   return (
-    <main className={`${theme === "dark" ? "bg-black" : "bg-white"}`}>
+    <main
+      className={`${theme === "dark" ? "bg-black" : "bg-light-mode-white"}`}
+    >
       <HeroSection />
       <BlogPreviews />
       <ContactForm />
