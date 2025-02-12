@@ -1,11 +1,13 @@
-import ThemeCookieHandler from "./theme-cookie-handler";
+"use client";
+
+import { ThemeProvider } from "@/providers/theme-provider";
+import { NavBar } from "@/components/Layout/nav-bar";
+import { Footer } from "@/components/Layout/footer";
 import "../styles/globals.css";
 import type React from "react";
+import { useTheme } from "@/providers/theme-provider";
 
-
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-
+function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -15,10 +17,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-light-mode-white">
-          <ThemeCookieHandler>{children}</ThemeCookieHandler>
+        <ThemeProvider defaultTheme="light" enableSystem>
+          <ThemeWrapper>{children}</ThemeWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
 
+function ThemeWrapper({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme();
 
+  return (
+    <div
+      className={`${
+        theme === "dark" ? "bg-black" : "bg-light-mode-white"
+      } transition-colors duration-500`}
+    >
+      <NavBar />
+      {children}
+      <Footer />
+    </div>
+  );
+}
+
+export default RootLayout;

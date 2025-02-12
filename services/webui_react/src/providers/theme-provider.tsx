@@ -7,7 +7,6 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import { useCookies } from "react-cookie";
 
 type Theme = "light" | "dark";
 
@@ -31,29 +30,19 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
   defaultTheme = "light",
   enableSystem = true, // Default to enabling system preference
-
 }) => {
-  const [cookies, setCookie, removeCookie] = useCookies(["theme"]); // use Cookies
   const [theme, setTheme] = useState<Theme>(() => {
-
-    let initialTheme: Theme;
-
-    // 1. Check for cookie
-    if (cookies.theme) {
-      initialTheme = cookies.theme as Theme;
+    // 1. Check localStorage
+    if (typeof window !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme") as Theme;
     }
-
     // 2. Check system preference (if enabled)
-    else if (enableSystem && typeof window !== "undefined") {
+    if (enableSystem && typeof window !== "undefined") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
-    } else {
-      initialTheme = defaultTheme;
     }
-
     // 3. Fallback to defaultTheme
-    console.log("ThemeProvider (client) - initial theme:", initialTheme);
     return defaultTheme;
   });
 
@@ -68,15 +57,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       document.documentElement.classList.remove("dark");
     }
 
-    // Set the cookie. Make it HTTP-only for security, and set a long expiration.
-    setCookie('theme', theme, {
-      path: '/', 
-      maxAge: 31536000, 
-      httpOnly: true, 
-      sameSite: 'lax', 
-      domain: undefined,
-    });
-
+    // Save to localStorage
+    localStorage.setItem("theme", theme);
 
     // Listen for system preference changes (if enabled)
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -95,7 +77,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
         mediaQuery.removeEventListener("change", handleSystemThemeChange);
       }
     };
-  }, [theme, enableSystem, setCookie]); // Run whenever theme or enableSystem changes
+  }, [theme, enableSystem]); // Run whenever theme or enableSystem changes
 
   return (
     <ThemeProviderContext.Provider value={{ theme, setTheme }}>
