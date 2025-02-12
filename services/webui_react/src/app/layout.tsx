@@ -6,6 +6,7 @@ import { Footer } from "@/components/Layout/footer";
 import "../styles/globals.css";
 import type React from "react";
 import { useTheme } from "@/providers/theme-provider";
+import { Toaster } from "sonner";
 
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,6 +21,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
         <ThemeProvider defaultTheme="light" enableSystem>
           <ThemeWrapper>{children}</ThemeWrapper>
         </ThemeProvider>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

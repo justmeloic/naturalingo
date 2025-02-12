@@ -1,26 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTheme } from "@/providers/theme-provider";
 import { useFormStatus } from "react-dom";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
+const toastAnimation = `
+  @keyframes toastTranslate {
+    0% { transform: translate(-50%, -50%); opacity: 1; }
+    100% { transform: translate(-50%, -150%); opacity: 0; }
+  }
+`;
+
 export function ContactForm() {
-  //const [isSubmitting, setIsSubmitting] = useState(false); // No longer needed
   const { theme } = useTheme();
-  const [isHovered, setIsHovered] = useState(false); // State for hover effect
+  const [isHovered, setIsHovered] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(toastAnimation, styleSheet.cssRules.length);
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    //setIsSubmitting(true); // No longer needed - useFormStatus handles this
-
     const formData = new FormData(event.currentTarget);
     const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
     if (!formspreeEndpoint) {
       console.error("Formspree endpoint is not defined!");
-      toast.error("Form submission is not configured correctly."); // You might want to import and use `toast` here too.
+      toast.error("Form submission is not configured correctly.", {
+        style: {
+          backgroundColor: theme === "dark" ? "#333" : "#f56565",
+          color: theme === "dark" ? "#fff" : "#fff",
+          fontSize: "1rem",
+          fontWeight: "bold",
+          width: "300px",
+          height: "100px",
+          boxShadow: "-10px 10px 15px 5px rgba(1, 0.1, 0.1, 0.2)",
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          borderRadius: "25px",
+          animation: "toastTranslate 3s forwards",
+          marginTop: "250px",
+          marginBottom: "50px",
+        },
+      });
       return;
     }
 
@@ -33,20 +61,74 @@ export function ContactForm() {
         },
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        event.currentTarget.reset();
-        toast.success("Message Sent!");
+        formRef.current?.reset();
+        toast.success("Message sent successfully!", {
+          duration: 2000,
+          style: {
+            backgroundColor: theme === "dark" ? "#C6A760" : "#C6A760",
+            color: theme === "dark" ? "#fff" : "#fff",
+            fontSize: "1rem",
+            fontWeight: "bold",
+            width: "300px",
+            height: "100px",
+            boxShadow: "-10px 10px 15px 5px rgba(1, 0.1, 0.1, 0.2)",
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            borderRadius: "25px",
+            animation: "toastTranslate 3s forwards",
+            marginTop: "250px",
+            marginBottom: "50px",
+          },
+        });
       } else {
-        const errorData = await response.json();
-        console.error("Formspree error:", errorData);
-        toast.error(
-          errorData.error || "Something went wrong. Please try again."
-        );
+        console.error("Formspree error:", data);
+        toast.error(data.error || "Failed to send message. Please try again.", {
+          style: {
+            backgroundColor: theme === "dark" ? "#333" : "#f56565",
+            color: theme === "dark" ? "#fff" : "#fff",
+            fontSize: "1rem",
+            fontWeight: "bold",
+            width: "300px",
+            height: "100px",
+            boxShadow: "-10px 10px 15px 5px rgba(1, 0.1, 0.1, 0.2)",
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            borderRadius: "25px",
+            animation: "toastTranslate 3s forwards",
+            marginTop: "250px",
+            marginBottom: "50px",
+          },
+        });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast.error("Something went wrong. Please try again."); // Consistent error handling
-    } // Removed finally block, useFormStatus handles state
+      toast.error("Failed to send message. Please try again.", {
+        style: {
+          backgroundColor: theme === "dark" ? "#333" : "#f56565",
+          color: theme === "dark" ? "#fff" : "#fff",
+          fontSize: "1rem",
+          fontWeight: "bold",
+          width: "300px",
+          height: "100px",
+          boxShadow: "-10px 10px 15px 5px rgba(1, 0.1, 0.1, 0.2)",
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          borderRadius: "25px",
+          animation: "toastTranslate 3s forwards",
+          marginTop: "250px",
+          marginBottom: "50px",
+        },
+      });
+    }
   }
 
   function SubmitButton() {
@@ -106,7 +188,6 @@ export function ContactForm() {
       <div className="container max-w-3xl">
         <div className="text-center mb-16">
           <h2
-            //className={`text-2xl font-open-sans font-[20] tracking-[2px] text-white`}
             className={`text-5xl font-open-sans font-[10] tracking-[2px] mb-4 ${
               theme === "dark" ? "text-white" : "text-zinc-500"
             }`}
@@ -121,7 +202,7 @@ export function ContactForm() {
             We read every email we receive.
           </p>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <input
               type="text"
@@ -167,7 +248,6 @@ export function ContactForm() {
             `}
           />
           <div className="flex justify-center mt-8">
-            {/* Replaced the original button with SubmitButton */}
             <SubmitButton />
           </div>
         </form>
