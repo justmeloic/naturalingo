@@ -9,18 +9,21 @@ const articles = [
     slug: "order-of-operations",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thumbnail-N7Iuw8wVIKVgYOtdMha1A8TXa1xkFi.png",
+    page: "blog",
   },
   {
     title: "Abstraction",
     slug: "abstraction",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thumbnail-dcH7BZKXdfP1oY3MsKTlfQ6X3K52mc.png",
+    page: "blog",
   },
   {
     title: "Financial Literacy Matters",
     slug: "financial-literacy",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thumbnail-1NC6lantvSmJJPILYBUPh2ibRvebRb.png",
+    page: "blog",
   },
 ];
 

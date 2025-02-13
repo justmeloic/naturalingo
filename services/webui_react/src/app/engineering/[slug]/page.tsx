@@ -51,7 +51,7 @@ export default function EngineeringPostPage({
         <div className="relative mt-12 pt-1">
           {/* Back button */}
           <div className="absolute left-0 -top-2 z-10">
-            <Link href="/blog">
+            <Link href="/engineering">
               <Button
                 variant="secondary"
                 size="sm"
