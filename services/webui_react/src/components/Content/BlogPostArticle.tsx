@@ -2,7 +2,7 @@
 
 import React, { Dispatch, SetStateAction } from "react";
 import { useTheme } from "@/providers/theme-provider";
-import { Switch } from "@/components/ui/switch";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 interface BlogPostArticleProps {
   post: {
@@ -15,19 +15,23 @@ interface BlogPostArticleProps {
   };
   isSimplified: boolean;
   setIsSimplified: Dispatch<SetStateAction<boolean>>;
+  markdownContent: string; // Add markdownContent prop
+  children: React.ReactNode; // Add children prop
 }
 
 const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
   post,
   isSimplified,
   setIsSimplified,
+  markdownContent, // Destructure markdownContent prop
+  children, // Destructure children prop
 }) => {
   const { theme } = useTheme();
 
   return (
     <article
       className={`
-            relative rounded-[2rem] p-12 md:p-16 mt-1
+            relative rounded-[2rem] p-12 md:p-16 mt-1 mb-11
             ${
               theme === "dark"
                 ? "bg-zinc-900 shadow-none"
@@ -58,7 +62,6 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
           </div>
         </button>
       </div>
-
       {/* Article header */}
       <header className="text-center mt-12 mb-16 max-w-3xl mx-auto">
         <h1 className="font-[400] text-4xl md:text-5xl font-serif mb-5  leading-tight text-zinc-900 dark:text-white">
@@ -67,22 +70,13 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
         <p className="mt-2  italic dark:text-zinc-500">{post.author}</p>
         <hr className="mt-9 border-gray-200 dark:border-zinc-700  mx-auto" />
       </header>
-
       {/* Article content */}
       <div className="prose prose-lg dark:prose-invert mx-auto max-w-3xl mb-3">
         <div className="text-[16px] font-light">
-          {isSimplified ? (
-            post.content.simple
-          ) : (
-            <div
-              className="markdown"
-              dangerouslySetInnerHTML={{
-                __html: post.content.detailed.replace(/\n\n/g, "<br><br>"),
-              }}
-            />
-          )}
+          <MarkdownRenderer content={markdownContent} />
         </div>
       </div>
+      {children} {/* Render children */}
     </article>
   );
 };

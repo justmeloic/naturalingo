@@ -7,13 +7,14 @@ interface BlogThumbnailProps {
     title: string;
     slug: string;
     image: string;
+    page: string;
   };
 }
 
 const BlogThumbnail: React.FC<BlogThumbnailProps> = ({ article }) => {
   return (
     <div key={article.slug} className="group cursor-pointer">
-      <Link href={`/blog/${article.slug}`} className="block">
+      <Link href={`/${article.page}/${article.slug}`} className="block">
         <div className="relative max-w-45 max-h-45 aspect-square mb-6 rounded-3xl overflow-hidden bg-muted shadow-custom dark:shadow-none">
           <Image
             src={article.image || "/placeholder.svg"}
@@ -31,7 +32,7 @@ const BlogThumbnail: React.FC<BlogThumbnailProps> = ({ article }) => {
         asChild
         className="rounded-full hover:bg-[#C6A760] hover:text-white transition-colors px-6 py-2 bg-[#ebebeb] text-black border-none"
       >
-        <Link href={`/blog/${article.slug}`}>Read more</Link>
+        <Link href={`/${article.page}/${article.slug}`}>Read more</Link>
       </Button>
     </div>
   );
