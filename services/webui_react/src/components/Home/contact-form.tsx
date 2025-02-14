@@ -66,7 +66,7 @@ export function ContactForm() {
       if (response.ok) {
         formRef.current?.reset();
         toast.success("Message sent successfully!", {
-          duration: 2000,
+          duration: 3000,
           style: {
             backgroundColor: theme === "dark" ? "#C6A760" : "#C6A760",
             color: theme === "dark" ? "#fff" : "#fff",
@@ -80,7 +80,7 @@ export function ContactForm() {
             left: "50%",
             transform: "translate(-50%, -50%)",
             borderRadius: "25px",
-            animation: "toastTranslate 3s forwards",
+            animation: "toastTranslate 6s forwards",
             marginTop: "250px",
             marginBottom: "50px",
           },
