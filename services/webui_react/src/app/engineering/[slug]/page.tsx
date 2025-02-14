@@ -20,8 +20,8 @@ const posts = {
     title: "Running in Parallel",
     author: "Loïc Muhirwa",
     content: {
-      simple: "/content-test/post1/body_simple.md",
-      detailed: "/content-test/post1/body.md",
+      simple: "/content-test/engineering/post1/body_simple.md",
+      detailed: "/content-test/engineering/post1/body.md",
     },
   },
 };

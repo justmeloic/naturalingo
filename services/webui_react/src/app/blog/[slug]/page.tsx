@@ -6,6 +6,7 @@ import { useTheme } from "@/providers/theme-provider";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import BlogPostArticle from "@/components/Content/BlogPostArticle";
+import MarkdownRenderer from "@/components/Content/MarkdownRenderer";
 
 interface BlogPostPageProps {
   params: {
@@ -19,28 +20,24 @@ const posts = {
     title: "In a Capitalist World, Financial Literacy Is Not Optional",
     author: "Loïc Muhirwa",
     content: {
-      simple: `To "matter" means to have impact and influence, affecting outcomes and shaping events. In a capitalist society, where money and markets permeate nearly every aspect of life, financial literacy—the knowledge and skills to manage financial resources effectively—inherently matters. In a capitalist system, financial literacy directly impacts individuals' ability to secure necessities, achieve long-term goals, and navigate the complexities of the economy, making it not just advantageous but essential for financial security and overall well-being.`,
-      detailed: `What does it mean for something "to matter"? This seemingly simple question has profound implications; in everyday language, "to matter" implies importance, significance, or consequence. But let's be more precise. For the purpose of this discussion, we'll define "to matter" as having impact and influence. Something matters if it can demonstrably affect outcomes, shape events, or alter the course of things.`,
+      simple: "/content-test/blog/post3/body_simple.md",
+      detailed: "/content-test/blog/post3/body.md",
     },
   },
   abstraction: {
     title: "Abstraction is the Bedrock of Human Cognition",
     author: "Loïc Muhirwa",
     content: {
-      simple: `Abstraction, the ability to simplify complex information by focusing on key features, is crucial for navigating an increasingly complex world. We use it constantly in language, maps, scientific models, and computer programming. This skill is closely tied to general intelligence and can be improved by looking for patterns, simplifying information, using analogies, engaging in creative activities, and studying diverse subjects.`,
-      detailed: `Abstraction, the process of simplifying complex information by focusing on essential features while ignoring irrelevant details, is not just a cognitive tool; it's arguably the most important one we have...`,
+      simple: "/content-test/blog/post2/body_simple.md",
+      detailed: "/content-test/blog/post2/body.md",
     },
   },
   "order-of-operations": {
     title: "The Importance of the Order of Operations in Achieving Goals",
     author: "Loïc Muhirwa",
     content: {
-      simple: `Doing things in the right order is really important for reaching your goals.
-
-Doing things in the wrong order can make it take much longer or even stop you from succeeding.
-
-To figure out the best order, start with the most basic tasks that everything else depends on.`,
-      detailed: `When striving to achieve a goal, many of us instinctively create a list of steps or tasks to guide us toward success...`,
+      simple: "/content-test/blog/post1/body_simple.md",
+      detailed: "/content-test/blog/post1/body.md",
     },
   },
 };
@@ -48,10 +45,25 @@ To figure out the best order, start with the most basic tasks that everything el
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const [isSimplified, setIsSimplified] = useState(false);
   const { theme } = useTheme();
+  const [markdownContent, setMarkdownContent] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    const fetchMarkdown = async () => {
+      const post = posts[params.slug as keyof typeof posts];
+      const contentUrl = isSimplified
+        ? post.content.simple
+        : post.content.detailed;
+      const response = await fetch(contentUrl);
+      const text = await response.text();
+      setMarkdownContent(text);
+    };
+
+    fetchMarkdown();
+  }, [isSimplified, params.slug]);
 
   const post = posts[params.slug as keyof typeof posts];
 
@@ -85,6 +97,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             post={post}
             isSimplified={isSimplified}
             setIsSimplified={setIsSimplified}
+            markdownContent={markdownContent} // Pass markdownContent as a prop
           />
         </div>
       </div>
