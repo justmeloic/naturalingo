@@ -13,7 +13,7 @@ type Theme = "light" | "dark";
 interface ThemeProviderProps {
   children: ReactNode;
   defaultTheme?: Theme;
-  enableSystem?: boolean; // Add this!
+  enableSystem?: boolean;
 }
 
 interface ThemeContextProps {

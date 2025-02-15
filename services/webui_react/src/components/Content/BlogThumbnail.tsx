@@ -30,7 +30,7 @@ const BlogThumbnail: React.FC<BlogThumbnailProps> = ({ article }) => {
       <Button
         variant="ghost"
         asChild
-        className="rounded-full hover:bg-[#C6A760] hover:text-white transition-colors px-6 py-2 bg-[#ebebeb] text-black border-none"
+        className="rounded-full hover:bg-accent hover:text-white transition-colors px-6 py-2 bg-[#ebebeb] text-black border-none"
       >
         <Link href={`/${article.page}/${article.slug}`}>Read more</Link>
       </Button>

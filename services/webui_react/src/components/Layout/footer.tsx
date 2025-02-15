@@ -1,27 +1,75 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Github, Linkedin } from "lucide-react";
 import { useTheme } from "@/providers/theme-provider";
 import type React from "react";
 import { toast } from "sonner"; // Import toast from sonner
 
+const toastStyles = {
+  success: (theme: string) => ({
+    backgroundColor: theme === "dark" ? "#C6A760" : "#C6A760",
+    color: theme === "dark" ? "#fff" : "#fff",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    width: "300px",
+    height: "100px",
+    boxShadow: "-10px 10px 15px 5px rgba(1, 0.1, 0.1, 0.2)",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "25px",
+    animation: "toastTranslate 6s forwards",
+    marginTop: "250px",
+    marginBottom: "50px",
+  }),
+  error: (theme: string) => ({
+    backgroundColor: theme === "dark" ? "#333" : "#f56565",
+    color: theme === "dark" ? "#fff" : "#fff",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    width: "300px",
+    height: "100px",
+    boxShadow: "-10px 10px 15px 5px rgba(1, 0.1, 0.1, 0.2)",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "25px",
+    animation: "toastTranslate 3s forwards",
+    marginTop: "250px",
+    marginBottom: "50px",
+  }),
+};
+
 export function Footer() {
   const { theme } = useTheme();
   const [email, setEmail] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(
+      `@keyframes toastTranslate {
+        0% { transform: translate(-50%, -50%); opacity: 1; }
+        100% { transform: translate(-50%, -150%); opacity: 0; }
+      }`,
+      styleSheet.cssRules.length
+    );
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-
-    // *** KEY CHANGE:  Get the endpoint from the environment variables.  CRITICAL for security! ***
     const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
-    // *** KEY CHANGE: Check if the endpoint is defined! ***
     if (!formspreeEndpoint) {
       console.error("Formspree endpoint is not defined!");
-      toast.error("Form submission is not configured correctly."); // User-friendly error
-      return; // Stop the function if the endpoint isn't set.
+      toast.error("Form submission is not configured correctly.", {
+        style: toastStyles.error(theme),
+      });
+      return;
     }
 
     try {
@@ -32,23 +80,27 @@ export function Footer() {
           Accept: "application/json",
         },
       });
-      if (response.ok) {
-        toast.success("Thank you for signing up!"); // Show success toast
-        event.currentTarget.reset();
-        setEmail(""); // Reset the email state as well
-      } else {
-        // *** KEY CHANGE:  More detailed error handling. ***
-        const errorData = await response.json(); // Try to get error details from Formspree.
-        console.error("Formspree error:", errorData); // Log for debugging.
 
-        // Display a more specific error message if possible, otherwise a generic one.
-        toast.error(
-          errorData.error || "Something went wrong. Please try again."
-        );
+      const data = await response.json();
+
+      if (response.ok) {
+        formRef.current?.reset();
+        setEmail("");
+        toast.success("Thank you for signing up!", {
+          duration: 3000,
+          style: toastStyles.success(theme),
+        });
+      } else {
+        console.error("Formspree error:", data);
+        toast.error(data.error || "Failed to sign up. Please try again.", {
+          style: toastStyles.error(theme),
+        });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast.error("Something went wrong. Please try again."); // Show error toast
+      toast.error("Failed to sign up. Please try again.", {
+        style: toastStyles.error(theme),
+      });
     }
   }
 
@@ -86,6 +138,7 @@ export function Footer() {
               Newsletter
             </h4>
             <form
+              ref={formRef}
               onSubmit={handleSubmit}
               className="max-w-md mx-auto space-y-8"
             >

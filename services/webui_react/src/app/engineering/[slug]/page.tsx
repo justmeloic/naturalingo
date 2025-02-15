@@ -59,19 +59,19 @@ export default function EngineeringPostPage({
 
   return (
     <main
-      className={`min-h-screen pt-24 ${
+      className={`min-h-screen pt-24  ${
         theme === "dark" ? "bg-black" : "bg-light-mode-white"
       }`}
     >
       <div className="container max-w-4xl mx-auto px-6">
-        <div className="relative mt-12 pt-1">
+        <div className="relative mt-12 pt-1 duration-800">
           {/* Back button */}
           <div className="absolute left-0 -top-2 z-10">
             <Link href="/engineering">
               <Button
                 variant="secondary"
                 size="sm"
-                className="gap-0 w-[65px]  rounded-full bg-gray-200 text-zinc-500 dark:text-zinc-400 dark:bg-zinc-900 hover:bg-[#C6A760] hover:text-white dark:hover:bg-[#C6A760] dark:hover:text-white"
+                className="gap-0 w-[65px]  rounded-full bg-gray-200 text-zinc-500 dark:text-zinc-400 dark:bg-zinc-900 hover:bg-accent hover:text-white dark:hover:bg-accent dark:hover:text-white"
               >
                 Back
               </Button>

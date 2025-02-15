@@ -19,13 +19,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
         <ThemeProvider defaultTheme="light" enableSystem>
-          <div className="min-h-screen bg-light-mode-white dark:bg-black transition-colors duration-500">
+          <div className="min-h-screen bg-light-mode-white dark:bg-black transition-colors duration-0 ">
             <NavBar />
             {children}
             <Footer />
