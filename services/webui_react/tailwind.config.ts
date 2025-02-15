@@ -70,7 +70,7 @@ const config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: '#C6A760',
+          DEFAULT: '#d7b065',
           foreground: '#000000', // dark text on accent background
         },
         popover: {
