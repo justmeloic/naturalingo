@@ -19,6 +19,8 @@ const posts = {
   "running-in-parallel": {
     title: "Running in Parallel",
     author: "Loïc Muhirwa",
+    authorUrl: "https://www.linkedin.com/in/loïc-muhirwa-b3a940242/",
+
     content: {
       simple: "/content-test/engineering/post1/body_simple.md",
       detailed: "/content-test/engineering/post1/body.md",
