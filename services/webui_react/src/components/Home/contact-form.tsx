@@ -142,7 +142,7 @@ export function ContactForm() {
         onMouseLeave={() => setIsHovered(false)}
         className={`
                 w-full max-w-xs h-14 rounded-full text-lg font-medium transition-all duration-300
-                bg-[#C6A760] text-white  disabled:opacity-70 relative overflow-hidden
+                bg-accent text-white  disabled:opacity-70 relative overflow-hidden
                 ${
                   pending
                     ? "cursor-not-allowed"

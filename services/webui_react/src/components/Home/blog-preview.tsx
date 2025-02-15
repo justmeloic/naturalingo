@@ -38,7 +38,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
           } transition-colors duration-500`}
         >
           <div className="space-y-6">
-            <h3 className="text-[#C6A760] font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
+            <h3 className="text-accent font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
               {post.category}
             </h3>
             <h2
@@ -57,7 +57,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
             </p>
             <Button
               variant="ghost"
-              className={`rounded-full hover:bg-[#C6A760] hover:text-white transition-colors px-6 py-2 ${
+              className={`rounded-full hover:bg-accent hover:text-white transition-colors px-6 py-2 ${
                 theme === "dark"
                   ? "bg-zinc-800 text-gray-300"
                   : "bg-gray-100 text-gray-700"
@@ -94,7 +94,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
           } transition-colors duration-500`}
         >
           <div className="space-y-6">
-            <h3 className="text-[#C6A760] font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
+            <h3 className="text-accent font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
               {post.category}
             </h3>
             <h2
@@ -113,7 +113,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
             </p>
             <Button
               variant="ghost"
-              className={`rounded-full hover:bg-[#C6A760] hover:text-white transition-colors px-6 py-2 ${
+              className={`rounded-full hover:bg-accent hover:text-white transition-colors px-6 py-2 ${
                 theme === "dark"
                   ? "bg-zinc-800 text-gray-300"
                   : "bg-gray-100 text-gray-700"

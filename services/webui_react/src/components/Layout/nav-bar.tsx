@@ -29,7 +29,7 @@ export function NavBar() {
           {/* Apply dark mode text colors and font size to links */}
           <Link
             href="/"
-            className={`text-[13px] hover:text-[#C6A760] transition-colors ${
+            className={`text-[13px] hover:text-accent transition-colors ${
               theme === "dark" ? "text-gray-300" : "text-gray-800"
             }`}
           >
@@ -37,7 +37,7 @@ export function NavBar() {
           </Link>
           <Link
             href="/blog"
-            className={`text-[13px] hover:text-[#C6A760] transition-colors ${
+            className={`text-[13px] hover:text-accent transition-colors ${
               theme === "dark" ? "text-gray-300" : "text-gray-800"
             }`}
           >
@@ -45,7 +45,7 @@ export function NavBar() {
           </Link>
           <Link
             href="/engineering"
-            className={`text-[13px] hover:text-[#C6A760] transition-colors ${
+            className={`text-[13px] hover:text-accent transition-colors ${
               theme === "dark" ? "text-gray-300" : "text-gray-800"
             }`}
           >
@@ -55,7 +55,7 @@ export function NavBar() {
           {isHomePage ? (
             <button
               onClick={() => scrollToSection("contact")}
-              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-accent transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >
@@ -64,7 +64,7 @@ export function NavBar() {
           ) : (
             <Link
               href="/#contact"
-              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-accent transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >
@@ -74,7 +74,7 @@ export function NavBar() {
           {isHomePage ? (
             <button
               onClick={() => scrollToSection("newsletter")}
-              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-accent transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >
@@ -83,7 +83,7 @@ export function NavBar() {
           ) : (
             <Link
               href="/#newsletter"
-              className={`text-[13px] hover:text-[#C6A760] transition-colors ${
+              className={`text-[13px] hover:text-accent transition-colors ${
                 theme === "dark" ? "text-gray-300" : "text-gray-800"
               }`}
             >

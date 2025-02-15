@@ -4,5 +4,9 @@
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  color: #C6A760;
+  @apply text-accent;
+}
+
+.markdown p {
+  @apply text-justify;
 }

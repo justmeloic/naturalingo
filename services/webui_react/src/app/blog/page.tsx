@@ -38,7 +38,14 @@ export default function BlogPage() {
         <p className="text-lg text-muted-foreground mb-16">
           These first three articles should be a primer for all content on this
           website. This is because the{" "}
-          <span className="text-[#C6A760] ">order of operations</span> matters.
+          <Link href="/blog/order-of-operations">
+            {" "}
+            <em className="text-accent hover:underline cursor-pointer">
+              {" "}
+              order of operations
+            </em>{" "}
+          </Link>{" "}
+          matters.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0">

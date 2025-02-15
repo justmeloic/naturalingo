@@ -13,15 +13,15 @@ export function ThemeToggle() {
       </span>
       <button
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="mr-3 relative inline-block w-[40px] h-[23px]"
+        className="mr-3 relative inline-block w-[40px] h-[24px]"
       >
         <div
           className={`absolute inset-0 rounded-full cursor-pointer transition-colors duration-300 ${
-            theme === "dark" ? "bg-[#C6A760]" : "bg-gray-300"
+            theme === "dark" ? "bg-accent" : "bg-gray-300"
           }`}
         >
           <div
-            className={`absolute rounded-full w-[19px] h-[18px] transition-transform duration-300 left-[2.2px] top-[2.4px] bg-white ${
+            className={`absolute rounded-full w-[19px] h-[18px] transition-transform duration-300 left-[2.2px] top-[2.5px] bg-white ${
               theme === "dark" ? "translate-x-[16px]" : "translate-x-[1px]"
             }`}
           />

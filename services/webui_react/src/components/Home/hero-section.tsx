@@ -61,7 +61,7 @@ export function HeroSection() {
         transition-colors duration-0
       `}
       >
-        <h3 className="text-[#C6A760] font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
+        <h3 className="text-accent font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
           From First Principles
         </h3>
 
@@ -84,8 +84,8 @@ export function HeroSection() {
             flex items-center justify-center transition-colors duration-100 cursor-pointer
             ${
               theme === "dark"
-                ? "bg-[#C6A760] text-black hover:bg-light-mode-white"
-                : "bg-black text-white hover:bg-[#C6A760]"
+                ? "bg-accent text-black hover:bg-light-mode-white"
+                : "bg-black text-white hover:bg-accent"
             }
           `}
         >
