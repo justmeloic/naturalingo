@@ -6,8 +6,12 @@ import type { Metadata } from "next";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Your App",
-  description: "Your app description",
+  title: "From First Principle",
+  description:
+    "Knowledge empowers individuals and enhances lives, and we're committed to providing a platform for lifelong learning.",
+  icons: {
+    icon: "/images/tab-logo.png",
+  },
 };
 
 export default function RootLayout({
