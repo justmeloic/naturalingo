@@ -1,14 +1,20 @@
-"use client";
-
 import { ThemeProvider } from "@/providers/theme-provider";
 import { NavBar } from "@/components/Layout/nav-bar";
 import { Footer } from "@/components/Layout/footer";
 import "../styles/globals.css";
-import type React from "react";
-import { useTheme } from "@/providers/theme-provider";
+import type { Metadata } from "next";
 import { Toaster } from "sonner";
 
-function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: "Your App",
+  description: "Your app description",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -17,30 +23,16 @@ function RootLayout({ children }: { children: React.ReactNode }) {
           rel="stylesheet"
         />
       </head>
-      <body className="bg-light-mode-white">
+      <body>
         <ThemeProvider defaultTheme="light" enableSystem>
-          <ThemeWrapper>{children}</ThemeWrapper>
+          <div className="min-h-screen bg-light-mode-white dark:bg-black transition-colors duration-500">
+            <NavBar />
+            {children}
+            <Footer />
+          </div>
         </ThemeProvider>
         <Toaster position="top-center" richColors />
       </body>
     </html>
   );
 }
-
-function ThemeWrapper({ children }: { children: React.ReactNode }) {
-  const { theme } = useTheme();
-
-  return (
-    <div
-      className={`${
-        theme === "dark" ? "bg-black" : "bg-light-mode-white"
-      } transition-colors duration-500`}
-    >
-      <NavBar />
-      {children}
-      <Footer />
-    </div>
-  );
-}
-
-export default RootLayout;

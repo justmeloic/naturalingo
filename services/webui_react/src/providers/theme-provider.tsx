@@ -17,7 +17,6 @@ interface ThemeProviderProps {
 }
 
 interface ThemeContextProps {
-  // Better name for clarity
   theme: Theme;
   setTheme: (theme: Theme) => void; // Use setTheme, not toggleTheme
 }
@@ -31,53 +30,37 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   defaultTheme = "light",
   enableSystem = true, // Default to enabling system preference
 }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // 1. Check localStorage
-    if (typeof window !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme") as Theme;
-    }
-    // 2. Check system preference (if enabled)
-    if (enableSystem && typeof window !== "undefined") {
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
+  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+  // Handle initial mount
+  useEffect(() => {
+    setMounted(true);
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (enableSystem) {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
         ? "dark"
         : "light";
+      setTheme(systemTheme);
     }
-    // 3. Fallback to defaultTheme
-    return defaultTheme;
-  });
+  }, [enableSystem]);
 
-  // --- APPLY DARK CLASS AND SAVE TO LOCALSTORAGE (useEffect hook) ---
   useEffect(() => {
-    if (typeof window === "undefined") return; // Prevent errors during SSR
+    if (!mounted) return;
 
-    // *** THIS IS THE KEY PART: Add/remove the 'dark' class ***
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    // Save to localStorage
+    const root = document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
     localStorage.setItem("theme", theme);
+  }, [theme, mounted]);
 
-    // Listen for system preference changes (if enabled)
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleSystemThemeChange = () => {
-      if (enableSystem) {
-        setTheme(mediaQuery.matches ? "dark" : "light");
-      }
-    };
-
-    if (enableSystem) {
-      mediaQuery.addEventListener("change", handleSystemThemeChange);
-    }
-
-    return () => {
-      if (enableSystem) {
-        mediaQuery.removeEventListener("change", handleSystemThemeChange);
-      }
-    };
-  }, [theme, enableSystem]); // Run whenever theme or enableSystem changes
+  // Avoid rendering content until mounted
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <ThemeProviderContext.Provider value={{ theme, setTheme }}>
