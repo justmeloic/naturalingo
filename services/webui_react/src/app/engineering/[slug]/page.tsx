@@ -59,12 +59,12 @@ export default function EngineeringPostPage({
 
   return (
     <main
-      className={`min-h-screen pt-24 ${
+      className={`min-h-screen pt-24  ${
         theme === "dark" ? "bg-black" : "bg-light-mode-white"
       }`}
     >
       <div className="container max-w-4xl mx-auto px-6">
-        <div className="relative mt-12 pt-1">
+        <div className="relative mt-12 pt-1 ">
           {/* Back button */}
           <div className="absolute left-0 -top-2 z-10">
             <Link href="/engineering">

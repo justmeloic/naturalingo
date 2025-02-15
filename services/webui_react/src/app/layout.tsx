@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider defaultTheme="light" enableSystem>
-          <div className="min-h-screen bg-light-mode-white dark:bg-black transition-colors duration-500">
+          <div className="min-h-screen bg-light-mode-white dark:bg-black transition-colors duration-0 ">
             <NavBar />
             {children}
             <Footer />

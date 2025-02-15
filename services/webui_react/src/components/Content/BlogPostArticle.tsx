@@ -31,7 +31,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
   return (
     <article
       className={`
-            relative rounded-[2rem] p-12 md:p-16 mt-1 mb-11
+            relative rounded-[2rem] p-12 md:p-16 mt-1 mb-11 duration-500
             ${
               theme === "dark"
                 ? "bg-zinc-900 shadow-none"

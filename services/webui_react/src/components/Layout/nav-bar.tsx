@@ -19,7 +19,7 @@ export function NavBar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 ${
+      className={`fixed top-0 left-0 right-0 z-50 shadow-xl ${
         theme === "dark" ? "bg-black" : "bg-light-mode-white"
       } transition-colors duration-0`} // Added transition for smooth color change
     >
