@@ -1,13 +1,3 @@
-## ⚠️ PRE-RELEASE ⚠️
-
-**This service (`webui_react`) hosts the _future_ codebase for the "From First Principles" web UI, built with React.** This is a pre-release version, and the code is currently **under active development**. It is being published so that interested parties can observe the development process and provide early feedback.
-
-**Do _not_ expect this code to be stable or fully functional at this time.** Features may be incomplete, broken, or subject to change without notice. Production deployment is _not_ recommended. This is a development preview only.
-
-**To view the currently deployed, stable version of the web UI, refer to the legacy `webui` service (though note that `webui` is itself deprecated in favor of this React-based version).** This `webui_react` service will eventually replace `webui` once it reaches a stable release.
-
----
-
 # From First Principles - Web UI Service
 
 ![Static Badge](https://img.shields.io/badge/build-passing-brightgreen)
