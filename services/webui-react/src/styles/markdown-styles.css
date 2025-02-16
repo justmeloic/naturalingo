@@ -1,0 +1,12 @@
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  @apply text-accent;
+}
+
+.markdown p {
+  @apply text-justify;
+}
