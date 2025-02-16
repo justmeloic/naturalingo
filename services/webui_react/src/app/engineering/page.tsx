@@ -11,6 +11,14 @@ const articles = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/thumbnail-FA334FGq38I43AGGr9joI9p6vD2WAt.png",
     page: "engineering",
   },
+
+  {
+    title:
+      "Is Your ML Strategy Grounded in Reality? A Strategic Framework for Business Leaders",
+    slug: "ml-strategy-for-business-leaders",
+    image: "/content-test/engineering/post2/thumbnail.png",
+    page: "engineering",
+  },
 ];
 
 export default function EngineeringPage() {

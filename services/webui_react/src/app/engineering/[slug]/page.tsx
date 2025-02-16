@@ -18,6 +18,17 @@ const posts = {
       detailed: "/content-test/engineering/post1/body.md",
     },
   },
+
+  "ml-strategy-for-business-leaders": {
+    title:
+      "Is Your ML Strategy Grounded in Reality? A Strategic Framework for Business Leaders",
+    author: "Loïc Muhirwa",
+    authorUrl: "https://www.linkedin.com/in/loïc-muhirwa-b3a940242/",
+    content: {
+      simple: "/content-test/engineering/post2/body_simple.md",
+      detailed: "/content-test/engineering/post2/body.md",
+    },
+  },
 };
 
 export async function generateStaticParams() {
