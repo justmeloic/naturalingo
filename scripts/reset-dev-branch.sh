@@ -18,7 +18,7 @@ fi
 
 # Check if the current directory is a git repository
 if ! git rev-parse --is-inside-work-tree &> /dev/null; then
-  echo "Error: Not a git repository. Please run this script from the root of your git repository."
+  echo "❌ Error: Not a git repository. Please run this script from the root of your git repository."
   exit 1
 fi
 
@@ -67,7 +67,9 @@ fi
 
 # Recreate dev branch from main
 echo "Creating new dev branch from main..."
+echo "🏃🏽‍♂️💨 Getting off the main branch"
+
 git checkout -b dev || exit 1
 git push origin dev || exit 1
 
-echo "Dev branch successfully reset and pushed."
+echo "✅ Dev branch successfully reset and pushed."

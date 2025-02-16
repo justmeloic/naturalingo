@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Redirect all output to a log file and also to the console
-exec > >(tee -a logs/deploy-webui-service.log) 2>&1
+exec > >(tee -a logs/deploy-webui_react-service.log) 2>&1
 # Script to checkout main, update it, and deploy the webui service
 
 #set -euo pipefail # Exit on any error
@@ -91,5 +91,5 @@ echo "✨ Deployment process completed!"
 
 
 # Recreate dev branch from main
-echo "Getting off the main branch"
+echo "🏃🏽‍♂️💨 Getting off the main branch"
 git checkout dev || exit 1
