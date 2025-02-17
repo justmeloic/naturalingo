@@ -1,0 +1,45 @@
+name: Deploy webui_react to Netlify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event.base_ref == 'refs/heads/dev' # Only deploy if merging from dev
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
+      - name: Navigate to webui_react directory
+        run: cd services/webui_react
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run type check
+        run: npx tsc --noEmit
+
+      - name: Run Linter
+        run: npm run lint
+      - name: Build Application
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir=out
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
