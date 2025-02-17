@@ -164,6 +164,17 @@
   }
 }
 
+@layer utilities {
+  /* Add these new utility classes */
+  .mobile-menu-open {
+    overflow: hidden;
+  }
+
+  .mobile-menu-slide {
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
 .animation-delay-200 {
   animation-delay: 200ms;
 }
