@@ -48,7 +48,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
               {addQuotes(post.subtitle)}
             </h2>
             <p
-              className={`text-sm md:text-base text-muted-foreground ${
+              className={`hidden sm:block text-sm md:text-base text-muted-foreground ${
                 theme === "dark" ? "text-gray-400" : "text-gray-500"
               } transition-colors duration-500`}
             >
@@ -71,7 +71,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
       <div
         className={`${
           post.imagePosition === "right" ? "order-last" : ""
-        } h-full`}
+        } h-full hidden sm:block`}
       >
         <div className="relative h-full rounded-3xl overflow-hidden group shadow-custom dark:shadow-none">
           <Link href={`/blog/${post.slug}`}>
@@ -104,7 +104,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
               {addQuotes(post.subtitle)}
             </h2>
             <p
-              className={`text-sm md:text-base text-muted-foreground ${
+              className={`hidden sm:block text-sm md:text-base text-muted-foreground ${
                 theme === "dark" ? "text-gray-400" : "text-gray-500"
               } transition-colors duration-500`}
             >
