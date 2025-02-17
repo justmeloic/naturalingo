@@ -24,32 +24,31 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
 
   return (
     <div
-      className={`grid md:grid-cols-[1fr_2fr] gap-8 items-stretch  ${
+      className={`grid md:grid-cols-[1fr_2fr] gap-4 md:gap-8 items-stretch ${
         post.imagePosition === "right" ? "md:grid-cols-[2fr_1fr]" : ""
       } transition-colors duration-500`}
     >
-      {/* Rest of your component is the same */}
       {post.imagePosition === "right" && (
         <div
-          className={`p-8 rounded-3xl h-full flex flex-col justify-between ${
+          className={`p-4 md:p-8 rounded-3xl h-full flex flex-col justify-between ${
             theme === "dark"
               ? "bg-zinc-900"
               : "bg-white shadow-custom dark:shadow-none"
           } transition-colors duration-500`}
         >
-          <div className="space-y-6">
-            <h3 className="text-accent font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
+          <div className="space-y-3 md:space-y-6">
+            <h3 className="text-accent font-open-sans tracking-[4px] md:tracking-[6px] text-sm md:text-base uppercase mb-4 md:mb-8 wow fadeInUp">
               {post.category}
             </h3>
             <h2
-              className={`text-3xl font-open-sans tracking-[1.2px] font-[70] ${
+              className={`text-xl md:text-3xl font-open-sans tracking-[1.2px] font-[70] ${
                 theme === "dark" ? "text-gray-200" : "text-gray-800"
               } transition-colors duration-500`}
             >
               {addQuotes(post.subtitle)}
             </h2>
             <p
-              className={`text-muted-foreground ${
+              className={`text-sm md:text-base text-muted-foreground ${
                 theme === "dark" ? "text-gray-400" : "text-gray-500"
               } transition-colors duration-500`}
             >
@@ -57,7 +56,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
             </p>
             <Button
               variant="ghost"
-              className={`rounded-full hover:bg-accent hover:text-white transition-colors px-6 py-2 ${
+              className={`text-sm md:text-base rounded-full hover:bg-accent hover:text-white transition-colors px-4 md:px-6 py-1 md:py-2 ${
                 theme === "dark"
                   ? "bg-zinc-800 text-gray-300"
                   : "bg-gray-100 text-gray-700"
@@ -87,25 +86,25 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
       </div>
       {post.imagePosition !== "right" && (
         <div
-          className={`p-8 rounded-3xl h-full flex flex-col justify-between ${
+          className={`p-4 md:p-8 rounded-3xl h-full flex flex-col justify-between ${
             theme === "dark"
               ? "bg-zinc-900"
               : "bg-white shadow-custom dark:shadow-none"
           } transition-colors duration-500`}
         >
-          <div className="space-y-6">
-            <h3 className="text-accent font-open-sans tracking-[6px] uppercase mb-8 wow fadeInUp">
+          <div className="space-y-3 md:space-y-6">
+            <h3 className="text-accent font-open-sans tracking-[4px] md:tracking-[6px] text-sm md:text-base uppercase mb-4 md:mb-8 wow fadeInUp">
               {post.category}
             </h3>
             <h2
-              className={`text-3xl font-open-sans tracking-[1.2px] font-[70] ${
+              className={`text-xl md:text-3xl font-open-sans tracking-[1.2px] font-[70] ${
                 theme === "dark" ? "text-gray-200" : "text-gray-800"
               } transition-colors duration-500`}
             >
               {addQuotes(post.subtitle)}
             </h2>
             <p
-              className={`text-muted-foreground ${
+              className={`text-sm md:text-base text-muted-foreground ${
                 theme === "dark" ? "text-gray-400" : "text-gray-500"
               } transition-colors duration-500`}
             >
@@ -113,7 +112,7 @@ function BlogPostPreview({ post }: { post: BlogPost }) {
             </p>
             <Button
               variant="ghost"
-              className={`rounded-full hover:bg-accent hover:text-white transition-colors px-6 py-2 ${
+              className={`text-sm md:text-base rounded-full hover:bg-accent hover:text-white transition-colors px-4 md:px-6 py-1 md:py-2 ${
                 theme === "dark"
                   ? "bg-zinc-800 text-gray-300"
                   : "bg-gray-100 text-gray-700"
@@ -172,14 +171,13 @@ export function BlogPreviews() {
   return (
     <section
       id="blog-previews"
-      className={`py-24 ${
+      className={`py-12 md:py-24 ${
         theme === "dark" ? "bg-black" : "bg-light-mode-white"
       }`}
     >
       <div className="container">
-        <div className="space-y-24">
+        <div className="space-y-12 md:space-y-24">
           {posts.map((post, index) => (
-            // Apply max-w-[1000px] and mx-auto to the container wrapping each BlogPostPreview
             <div key={index} className="max-w-[1150px] mx-auto">
               <BlogPostPreview post={post} />
             </div>

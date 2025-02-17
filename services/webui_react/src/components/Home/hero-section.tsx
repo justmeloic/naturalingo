@@ -36,7 +36,8 @@ export function HeroSection() {
   return (
     <section
       className={`
-        relative min-h-[85vh]  flex items-center justify-center mx-[5%] mt-[30px] rounded-[30px] overflow-hidden
+        relative min-h-[85vh] flex items-center justify-center
+        mx-[0%] md:mx-[5%] mt-[30px] rounded-[30px] overflow-hidden
         ${theme === "dark" ? "bg-black" : "bg-gray-100"}
         transition-colors duration-0
       `}
@@ -56,7 +57,8 @@ export function HeroSection() {
       ></div>
       <div
         className={`
-        w-full max-w-[900px] max-h-[900px] mx-auto text-center p-16 rounded-[30px] relative mt-[85px]
+        w-full max-w-[900px] max-h-[900px] mx-auto text-center
+        p-8 md:p-16 rounded-[30px] relative mt-[85px]
         ${theme === "dark" ? "bg-black/70" : "bg-light-mode-white/80"}
         transition-colors duration-0
       `}
@@ -67,7 +69,7 @@ export function HeroSection() {
 
         <h1
           className={`
-          font-serif text-4xl md:text-[35px] leading-[1.4] max-w-8xl mx-auto
+          font-serif text-xl md:text-[35px] leading-[1.4] max-w-8xl mx-auto
           ${theme === "dark" ? "text-gray-200" : "text-zinc-700"}
           font-extralight wow fadeInUp
           transition-colors duration-0
@@ -80,7 +82,9 @@ export function HeroSection() {
         <button
           onClick={() => scrollToSection("blog-previews")}
           className={`
-            absolute mt-20 left-1/2 -translate-x-1/2 w-[50px] h-[50px] rounded-full
+            absolute mt-10 md:mt-20 left-1/2 -translate-x-1/2
+            w-[40px] h-[40px] md:w-[50px] md:h-[50px]
+            rounded-full
             flex items-center justify-center transition-colors duration-100 cursor-pointer
             ${
               theme === "dark"
@@ -89,7 +93,7 @@ export function HeroSection() {
             }
           `}
         >
-          <ChevronDown className="w-6 h-6" />
+          <ChevronDown className="w-5 h-5 md:w-6 md:h-6" />
         </button>
       </div>
     </section>
