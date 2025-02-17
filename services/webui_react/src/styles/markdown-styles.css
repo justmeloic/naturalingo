@@ -16,7 +16,7 @@
 }
 
 .markdown h3 {
-  @apply text-[14px] md:text-2xl;
+  @apply text-[16px] md:text-2xl;
 }
 
 .markdown h4 {
@@ -32,5 +32,5 @@
 }
 
 .markdown p {
-  @apply text-justify text-[15px] md:text-base;
+  @apply text-justify text-[18px] md:text-base;
 }
