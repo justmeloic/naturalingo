@@ -43,7 +43,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
           `}
     >
       {/* Simplify toggle */}
-      <div className="absolute right-8 top-8 flex items-center mt-4 ">
+      <div className="absolute right-8 top-8 flex items-center mt-1 mb-15 md: mb-15">
         <span className="mr-5 text-[12px] text-gray-400 dark:text-gray-50">
           {isSimplified ? "Simplify" : "Simplify"}
         </span>
@@ -84,7 +84,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
         <hr className="mt-9 border-gray-200 dark:border-zinc-700  mx-auto" />
       </header>
       {/* Article content */}
-      <div className="prose prose-lg dark:prose-invert mx-4 md:mx-auto max-w-3xl mb-3">
+      <div className="prose prose-lg dark:prose-invert mx-1 md:mx-auto max-w-3xl mb-3">
         <div className="text-[16px] font-light ">
           <MarkdownRenderer content={markdownContent} />
         </div>
