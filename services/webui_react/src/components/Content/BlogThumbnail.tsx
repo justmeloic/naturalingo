@@ -18,7 +18,7 @@ const BlogThumbnail: React.FC<BlogThumbnailProps> = ({ article }) => {
       className="group cursor-pointer flex flex-col items-center"
     >
       <Link href={`/${article.page}/${article.slug}`} className="block">
-        <div className="relative sm:max-w-25 sm:max-h-25 max-w-45 max-h-45 aspect-square mb-6 rounded-3xl overflow-hidden bg-muted shadow-custom dark:shadow-none flex items-center justify-center">
+        <div className="relative w-full sm:w-[250px] h-[250px] aspect-square mb-6 rounded-3xl overflow-hidden bg-muted shadow-custom dark:shadow-none flex items-center justify-center">
           <Image
             src={article.image || "/placeholder.svg"}
             alt={article.title}
