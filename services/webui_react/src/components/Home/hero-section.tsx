@@ -69,7 +69,7 @@ export function HeroSection() {
 
         <h1
           className={`
-          font-serif text-xl md:text-[35px] leading-[1.4] max-w-8xl mx-auto
+          font-serif text-[29px] md:text-[35px] leading-[1.4] max-w-8xl mx-auto
           ${theme === "dark" ? "text-gray-200" : "text-zinc-700"}
           font-extralight wow fadeInUp
           transition-colors duration-0

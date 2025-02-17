@@ -43,7 +43,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
           `}
     >
       {/* Simplify toggle */}
-      <div className="absolute right-8 top-8 flex items-center mt-1 mb-15 md: mb-15">
+      <div className="absolute right-8 top-18 flex items-center mt-1 mb-15 md: mb-15">
         <span className="mr-5 text-[12px] text-gray-400 dark:text-gray-50">
           {isSimplified ? "Simplify" : "Simplify"}
         </span>
@@ -65,7 +65,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
         </button>
       </div>
       {/* Article header */}
-      <header className="text-center mt-12 mb-16 max-w-3xl mx-auto">
+      <header className="text-center mt-12 mb-16 max-w-3xl mx-0 md:mx-auto">
         <h1 className="font-[400] text-2xl md:text-5xl font-serif mb-5 leading-tight text-zinc-900 dark:text-white">
           {post.title}
         </h1>
