@@ -24,7 +24,7 @@ export function NavBar() {
     <>
       <Link
         href="/"
-        className={`text-[13px] md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
+        className={` md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
           theme === "dark" ? "text-gray-300" : "text-gray-800"
         } md:py-0 py-6`}
         onClick={() => setIsMobileMenuOpen(false)}
@@ -33,7 +33,7 @@ export function NavBar() {
       </Link>
       <Link
         href="/blog"
-        className={`text-[13px] md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
+        className={` md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
           theme === "dark" ? "text-gray-300" : "text-gray-800"
         } md:py-0 py-6`}
         onClick={() => setIsMobileMenuOpen(false)}
@@ -42,7 +42,7 @@ export function NavBar() {
       </Link>
       <Link
         href="/engineering"
-        className={`text-[13px] md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
+        className={`md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
           theme === "dark" ? "text-gray-300" : "text-gray-800"
         } md:py-0 py-6`}
         onClick={() => setIsMobileMenuOpen(false)}
@@ -55,7 +55,7 @@ export function NavBar() {
             scrollToSection("contact");
             setIsMobileMenuOpen(false);
           }}
-          className={`text-[13px] md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
+          className={`md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
             theme === "dark" ? "text-gray-300" : "text-gray-800"
           } md:py-0 py-6`}
         >
@@ -64,7 +64,7 @@ export function NavBar() {
       ) : (
         <Link
           href="/#contact"
-          className={`text-[13px] md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
+          className={` md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
             theme === "dark" ? "text-gray-300" : "text-gray-800"
           } md:py-0 py-6`}
           onClick={() => setIsMobileMenuOpen(false)}
@@ -78,7 +78,7 @@ export function NavBar() {
             scrollToSection("newsletter");
             setIsMobileMenuOpen(false);
           }}
-          className={`text-[13px] md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
+          className={` md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
             theme === "dark" ? "text-gray-300" : "text-gray-800"
           } md:py-0 py-6`}
         >
@@ -87,7 +87,7 @@ export function NavBar() {
       ) : (
         <Link
           href="/#newsletter"
-          className={`text-[13px] md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
+          className={` md:text-[13px] text-[20px] transition-colors md:hover:text-accent hover:text-accent ${
             theme === "dark" ? "text-gray-300" : "text-gray-800"
           } md:py-0 py-6`}
           onClick={() => setIsMobileMenuOpen(false)}
@@ -100,7 +100,7 @@ export function NavBar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 shadow-xl ${
+      className={`fixed top-0 left-0 right-0 z-50 shadow-xl dark:shadow-custom-white ${
         theme === "dark" ? "bg-black" : "bg-light-mode-white"
       } transition-colors duration-0`}
     >
