@@ -33,7 +33,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
   return (
     <article
       className={`
-            relative rounded-[2rem] p-12 md:p-16 mt-1 mb-11 duration-500
+            relative rounded-[2rem] p-6 md:p-16 mt-1 mb-11 duration-500
             ${
               theme === "dark"
                 ? "bg-zinc-900 shadow-none"
@@ -66,7 +66,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
       </div>
       {/* Article header */}
       <header className="text-center mt-12 mb-16 max-w-3xl mx-auto">
-        <h1 className="font-[400] text-4xl md:text-5xl font-serif mb-5  leading-tight text-zinc-900 dark:text-white">
+        <h1 className="font-[400] text-2xl md:text-5xl font-serif mb-5 leading-tight text-zinc-900 dark:text-white">
           {post.title}
         </h1>
         <p className="mt-2 text-zinc-400  italic dark:text-zinc-500">
@@ -84,7 +84,7 @@ const BlogPostArticle: React.FC<BlogPostArticleProps> = ({
         <hr className="mt-9 border-gray-200 dark:border-zinc-700  mx-auto" />
       </header>
       {/* Article content */}
-      <div className="prose prose-lg dark:prose-invert mx-auto max-w-3xl mb-3">
+      <div className="prose prose-lg dark:prose-invert mx-4 md:mx-auto max-w-3xl mb-3">
         <div className="text-[16px] font-light ">
           <MarkdownRenderer content={markdownContent} />
         </div>
