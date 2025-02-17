@@ -7,6 +7,30 @@
   @apply text-accent;
 }
 
+.markdown h1 {
+  @apply text-2xl md:text-4xl;
+}
+
+.markdown h2 {
+  @apply text-xl md:text-3xl;
+}
+
+.markdown h3 {
+  @apply text-[14px] md:text-2xl;
+}
+
+.markdown h4 {
+  @apply text-base md:text-xl;
+}
+
+.markdown h5 {
+  @apply text-sm md:text-lg;
+}
+
+.markdown h6 {
+  @apply text-xs md:text-base;
+}
+
 .markdown p {
-  @apply text-justify;
+  @apply text-justify text-[15px] md:text-base;
 }
