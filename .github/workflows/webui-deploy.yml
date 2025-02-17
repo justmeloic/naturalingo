@@ -1,4 +1,4 @@
-name: Deploy webui_react to Netlify
+name: Deploy webui_react service
 
 on:
   push:
@@ -8,16 +8,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.base_ref == 'refs/heads/dev' # Only deploy if merging from dev
+    # Use a more robust check for merges from dev
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref == 'dev'
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Debug GitHub Context (Temporary)
+        run: |
+          echo "GitHub Event Name: ${{ github.event_name }}"
+          echo "GitHub Ref: ${{ github.ref }}"
+          echo "GitHub Base Ref: ${{ github.base_ref }}"
+          echo "GitHub Event: ${{ toJSON(github.event) }}"
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "18" # Or your specific Node.js version
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
@@ -39,7 +47,7 @@ jobs:
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         with:
-          args: deploy --prod --dir=out
+          args: deploy --prod --dir=out # Adjust 'out' if your build output is different
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
