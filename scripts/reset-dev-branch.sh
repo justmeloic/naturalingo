@@ -70,6 +70,6 @@ echo "Creating new dev branch from main..."
 echo "🏃🏽‍♂️💨 Getting off the main branch"
 
 git checkout -b dev || exit 1
-git push origin dev || exit 1
+git push --set-upstream origin dev || exit 1
 
 echo "✅ Dev branch successfully reset and pushed."
