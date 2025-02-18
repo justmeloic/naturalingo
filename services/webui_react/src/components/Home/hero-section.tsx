@@ -37,14 +37,14 @@ export function HeroSection() {
     <section
       className={`
         relative min-h-[85vh] flex items-center justify-center
-        mx-[0%] md:mx-[5%] mt-[30px] rounded-[30px] overflow-hidden
+        mx-[0%] md:mx-[5%] md:mt-[30px] md:rounded-[50px] overflow-hidden
         ${theme === "dark" ? "bg-black" : "bg-gray-100"}
         transition-colors duration-0
       `}
     >
       <div
         ref={backgroundRef} // Attach the ref to the background div
-        className="absolute top-0 left-0 w-full h-full pointer-events-none mt-[80px] rounded-[30px]" // Make it cover the section and non-interactive
+        className="absolute top-0 left-0 w-full h-full pointer-events-none mt-[80px] md:rounded-[50px]" // Make it cover the section and non-interactive
         style={{
           backgroundImage:
             theme === "dark"
@@ -58,7 +58,7 @@ export function HeroSection() {
       <div
         className={`
         w-full max-w-[900px] max-h-[900px] mx-auto text-center
-        p-8 md:p-16 rounded-[30px] relative mt-[85px]
+        p-8 md:p-16 md:rounded-[50px] relative mt-[85px]
         ${theme === "dark" ? "bg-black/70" : "bg-light-mode-white/80"}
         transition-colors duration-0
       `}

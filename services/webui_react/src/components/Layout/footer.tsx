@@ -176,7 +176,7 @@ export function Footer() {
           {/* Copyright and Social Links */}
           <div className="text-center space-y-6">
             <p className={`text-sm text-zinc-500`}>
-              Copyright © 2024 Naturalingo Inc
+              Copyright © 2025 Naturalingo Inc
             </p>
             <div className="flex justify-center gap-4">
               <a
