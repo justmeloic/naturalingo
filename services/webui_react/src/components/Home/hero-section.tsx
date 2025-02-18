@@ -57,8 +57,8 @@ export function HeroSection() {
       ></div>
       <div
         className={`
-        w-full max-w-[900px] max-h-[900px] mx-auto text-center
-        p-8 md:p-16 md:rounded-[50px] relative mt-[85px]
+        w-full md:max-w-[900px] max-h-[900px] md:mx-auto text-center
+        p-4 md:p-16 md:rounded-[50px] relative mt-[85px]
         ${theme === "dark" ? "bg-black/70" : "bg-light-mode-white/80"}
         transition-colors duration-0
       `}
@@ -69,9 +69,9 @@ export function HeroSection() {
 
         <h1
           className={`
-          font-serif text-[29px] md:text-[35px] leading-[1.4] max-w-8xl mx-auto
+          font-serif text-[29px] md:text-[35px] leading-[1.4]
           ${theme === "dark" ? "text-gray-200" : "text-zinc-700"}
-          font-extralight wow fadeInUp
+          font-extralight wow fadeInUp px-0
           transition-colors duration-0
         `}
         >
