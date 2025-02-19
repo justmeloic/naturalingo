@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "From First Principle",
+  title: "From First Principles",
   description:
     "Knowledge empowers individuals and enhances lives, and we're committed to providing a platform for lifelong learning.",
   icons: {
