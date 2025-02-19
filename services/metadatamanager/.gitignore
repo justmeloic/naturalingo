@@ -1,0 +1,14 @@
+
+# Ignore log files
+logs/
+*.log
+# Ignore Python cache files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# config
+src/config/config_private.yaml
+
+# pre-release
+src/
