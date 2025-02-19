@@ -34,10 +34,10 @@ export function ThemeToggle() {
         variant="ghost"
         size="icon"
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className="md:hidden h-12 w-12 p-2 rounded-full bg-transparent transition-colors [@media(hover:hover)]:hover:bg-accent [@media(hover:hover)]:dark:hover:bg-accent"
+        className="md:hidden h-12 w-12 p-2 rounded-full bg-transparent transition-colors [@media(hover:hover)]:hover:bg-accent [@media(hover:hover)]:dark:hover:text-black"
       >
         {theme === "dark" ? (
-          <Sun className="h-10 w-10 fill-current text-accent [@media(hover:hover)]:dark:hover:text-white" />
+          <Sun className="h-10 w-10 fill-current  hover:text-accent [@media(hover:hover)]:dark:hover:text-white" />
         ) : (
           <Moon className="h-10 w-10 fill-current text-black dark:text-slate-200" />
         )}
