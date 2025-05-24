@@ -182,7 +182,7 @@ export function Footer() {
             </p>
             <div className="flex justify-center gap-4">
               <a
-                href="https://www.linkedin.com/in/loïc-muhirwa-b3a940242/"
+                href="https://www.linkedin.com/company/107131887"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
@@ -197,7 +197,7 @@ export function Footer() {
                 />
               </a>
               <a
-                href="https://github.com/justmeloic/from-first-principles"
+                href="https://github.com/justmeloic/naturalingo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`

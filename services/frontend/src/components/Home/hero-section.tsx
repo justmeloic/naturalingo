@@ -64,7 +64,7 @@ export function HeroSection() {
       `}
       >
         <h2
-          className={`text-3xl font-normal font-open-sans mb-8 tracking-[1px]`}
+          className={`text-3xl font-extrabold font-open-sans mb-8 tracking-[1px]`}
         >
           <span
             className={`text-accent transition-all duration-3500 delay-500 ${
@@ -96,10 +96,10 @@ export function HeroSection() {
           </span>
           <span
             className={`text-accent transition-all duration-3500 delay-900 ${
-              theme === "dark" ? "opacity-100" : "opacity-50"
+              theme === "dark" ? "opacity-100" : "opacity-100"
             }`}
           >
-            ngo
+            ngo ai
           </span>
         </h2>
 
