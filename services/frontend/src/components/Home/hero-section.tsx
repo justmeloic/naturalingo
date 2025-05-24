@@ -67,8 +67,8 @@ export function HeroSection() {
           className={`text-3xl font-normal font-open-sans mb-8 tracking-[1px]`}
         >
           <span
-            className={`text-accent transition-all duration-500 delay-500 ${
-              theme === "dark" ? "opacity-100" : "opacity-0"
+            className={`text-accent transition-all duration-3500 delay-500 ${
+              theme === "dark" ? "opacity-100" : "opacity-50"
             }`}
           >
             natur
@@ -81,8 +81,8 @@ export function HeroSection() {
             a
           </span>
           <span
-            className={`text-accent transition-all duration-500 delay-700 ${
-              theme === "dark" ? "opacity-100" : "opacity-0"
+            className={`text-accent transition-all duration-3500 delay-700 ${
+              theme === "dark" ? "opacity-100" : "opacity-50"
             }`}
           >
             l
@@ -95,8 +95,8 @@ export function HeroSection() {
             i
           </span>
           <span
-            className={`text-accent transition-all duration-500 delay-900 ${
-              theme === "dark" ? "opacity-100" : "opacity-0"
+            className={`text-accent transition-all duration-3500 delay-900 ${
+              theme === "dark" ? "opacity-100" : "opacity-50"
             }`}
           >
             ngo
