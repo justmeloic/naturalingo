@@ -196,21 +196,6 @@ export function Footer() {
                   fill="currentColor" // Fill with the current text color
                 />
               </a>
-              <a
-                href="https://github.com/justmeloic/naturalingo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`
-            p-2 rounded-full transition-colors
-            bg-white text-black hover:bg-zinc-200
-          `}
-              >
-                <Github
-                  className="h-5 w-5"
-                  strokeWidth={0} // Remove the stroke
-                  fill="currentColor" // Fill with the current text color
-                />
-              </a>
             </div>
           </div>
         </div>
